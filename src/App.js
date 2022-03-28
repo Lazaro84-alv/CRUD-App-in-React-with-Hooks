@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import UserTable from './tables/UserTable'
+import AddUserForm from './forms/AddUserForm'
 
 const App = () => {
   const usersData = [
@@ -10,6 +11,11 @@ const App = () => {
 
   const [users, setUsers] = useState(usersData)
 
+  const addUser = (user) => {
+    user.id = users.length + 1
+    setUsers([...users, user])
+  }
+
 
   return (
     <div className="container">
@@ -17,6 +23,7 @@ const App = () => {
       <div className="flex-row">
         <div className="flex-large">
           <h2>Adicionar usuário</h2>
+          <AddUserForm addUser={addUser} />
         </div>
         <div className="flex-large">
           <h2>Lista de usuários</h2>
@@ -28,4 +35,4 @@ const App = () => {
 }
 
 
-export default App;
+export default App
